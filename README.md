@@ -1,5 +1,9 @@
 # modern-rl-from-agents-to-llms
 
+**What:** Notebooks from a reinforcement learning course, from dynamic programming to RLHF, DPO and GRPO on small language models (notebooks 8 and 9 are class solutions).  
+**Result:** DAgger closed 99% of the gap to the expert; the Bradley-Terry reward model reached 0.997 correlation with the true reward.  
+**Stack:** Python, PyTorch, Gymnasium, transformers, PEFT (LoRA)
+
 The exercise notebooks of the course *Modern Reinforcement Learning: From Agents to LLMs*
 (Prof. Ilija Bogunovic, University of Basel, spring 2026,
 [course page](https://rhinelab.ai/teaching/modern-rl-spring-2026)). They go from dynamic
