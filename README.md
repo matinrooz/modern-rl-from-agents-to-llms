@@ -13,17 +13,24 @@ Notebooks 1 to 7 are my solutions. Notebooks 8 and 9 are the solutions we worked
 together in the exercise session, the code there is from the course (see the note at the top
 of each notebook).
 
-| notebook | topic | what is in it |
-|---|---|---|
-| `project1.ipynb` | MDPs and dynamic programming | value iteration and policy iteration on a 6×6 grid with a goal, a trap and slippery moves |
-| `project2.ipynb` | Monte Carlo and TD control | first-visit vs. last-visit MC, SARSA and Q-learning on a GridWorld |
-| `project3.ipynb` | function approximation | semi-gradient TD(0) with state aggregation on a 100-state random walk, DQN on CartPole |
-| `project4.ipynb` | policy gradients | REINFORCE, REINFORCE with a learned baseline, actor-critic on CartPole |
-| `project5.ipynb` | GAE, TRPO, PPO | λ sweep for GAE, TRPO and PPO with the clipped objective on CartPole |
-| `project6.ipynb` | imitation learning | behavior cloning and DAgger on a custom 2D task (follow an S-shaped curve) |
-| `project7.ipynb` | preference learning | Bradley–Terry reward model on a 2D toy problem, and reward hacking |
-| `project8.ipynb` | RLHF: PPO-KL and DPO | GPT-2 + LoRA, SFT on IMDB reviews, then PPO with a KL penalty and DPO, with a DistilBERT sentiment classifier as reward |
-| `project9.ipynb` | GRPO | Qwen3-0.6B + LoRA trained with GRPO on Countdown (reach a target number with +, −, ×, ÷), verifiable reward, MAD normalisation, clipping, temperature |
+- `project1.ipynb`, MDPs and dynamic programming: value iteration and policy iteration on a
+  6×6 grid with a goal, a trap and slippery moves
+- `project2.ipynb`, Monte Carlo and TD control: first-visit vs. last-visit MC, SARSA and
+  Q-learning on a GridWorld
+- `project3.ipynb`, function approximation: semi-gradient TD(0) with state aggregation on a
+  100-state random walk, DQN on CartPole
+- `project4.ipynb`, policy gradients: REINFORCE, REINFORCE with a learned baseline,
+  actor-critic on CartPole
+- `project5.ipynb`, GAE, TRPO and PPO: a λ sweep for GAE, TRPO and PPO with the clipped
+  objective on CartPole
+- `project6.ipynb`, imitation learning: behavior cloning and DAgger on a custom 2D task
+  (follow an S-shaped curve)
+- `project7.ipynb`, preference learning: a Bradley–Terry reward model on a 2D toy problem,
+  and reward hacking
+- `project8.ipynb`, RLHF with PPO-KL and DPO: GPT-2 + LoRA, SFT on IMDB reviews, then PPO with
+  a KL penalty and DPO, with a DistilBERT sentiment classifier as reward
+- `project9.ipynb`, GRPO: Qwen3-0.6B + LoRA trained with GRPO on Countdown (reach a target
+  number with +, −, ×, ÷), verifiable reward, MAD normalisation, clipping, temperature
 
 ## Results
 
@@ -33,14 +40,9 @@ All notebooks except 3 and 9 are saved with their outputs and plots (CPU / Apple
 updates. With the greedy policy from value iteration, 50 out of 50 rollouts reach the goal,
 average return 0.49 (each step costs 0.04).
 
-**Notebook 2:** bias and variance of the estimate of one Q-value over 25 runs (true value
-about −2.12):
-
-| method | bias | variance |
-|---|---|---|
-| MC, last visit | −9.57 | 54.9 |
-| MC, first visit | −7.74 | 19.6 |
-| TD (Q-learning) | −0.47 | 0.02 |
+**Notebook 2:** I estimated one Q-value (true value about −2.12) over 25 runs. Monte Carlo
+with last visit was far off (bias −9.57, variance 54.9), first visit was a bit better (−7.74
+and 19.6), and Q-learning was almost exact (bias −0.47, variance 0.02).
 
 **Notebook 4:** a baseline reduces the variance of the policy gradient by 2.9× in the toy
 example. On CartPole, REINFORCE with normalised returns and REINFORCE with a learned baseline
@@ -57,14 +59,8 @@ expert gets −56.5. DAgger brings it back to −57.4, which closes 99% of the g
 correlation of 0.997 with the true reward on the training distribution and 0.934 out of
 distribution.
 
-**Notebook 8:** mean sentiment reward of the generated reviews (from −1 to +1):
-
-| model | reward |
-|---|---|
-| base GPT-2 | +0.44 |
-| SFT | +0.25 |
-| PPO-KL | +0.50 |
-| DPO | +0.99 |
+**Notebook 8:** the mean sentiment reward of the generated reviews (from −1 to +1) was +0.44
+for the base GPT-2, +0.25 after SFT, +0.50 with PPO-KL and +0.99 with DPO.
 
 DPO gave the most positive reviews. PPO-KL was unstable: the reward went up to +0.77 after 60
 iterations and then dropped again while the KL to the reference grew to 2.2, and some
